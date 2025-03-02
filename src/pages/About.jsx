@@ -11,10 +11,19 @@ export default function About() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">ごあいさつ</h2>
           <p className="text-lg text-gray-700 leading-relaxed">
            　私たち豊中工業株式会社は1942年(昭和17年)の創業以来、内装部品メーカーとして日本の自動車産業を支えてまいりました。国内でも数少ない、開発から生産まで行うワンストップの生産体制を組むことにより、お客さまの幅広いニーズに対して柔軟に対応することを可能にしてまいりました。<br />
-　近年、弊社を取り巻くビジネス環境は大きな変化にさらされています。そんな非常に舵取りの難しい時代であるからこそ、私たちは”ものづくりの原点”に立ち返り、より高品質で付加価値の高い製品づくりに努めてまいります。<br />
+　近年、弊社を取り巻くビジネス環境は大きな変化にさらされています。そんな非常に舵取りの難しい時代であるからこそ、私たちは"ものづくりの原点"に立ち返り、より高品質で付加価値の高い製品づくりに努めてまいります。<br />
 　皆さま方に支えていただき、創業から三四半世紀を迎えようとしています。これまでのご愛顧に御礼申し上げるとともに、今後ともより一層のご指導、ご支援を賜りますようお願い申し上げます。
           </p>
         </div>
+        <div className="flex items-center justify-center">
+          {/* Space for photo */}
+          <div className="w-full h-80 bg-gray-100 rounded-2xl flex items-center justify-center">
+            <p className="text-gray-400 text-lg">写真スペース</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-16">
         <div className="bg-gradient-to-bl from-secondary/10 to-white p-8 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">会社概要</h2>
           <div className="space-y-4">
@@ -46,45 +55,6 @@ export default function About() {
               <span>212名(令和6年3月末)</span>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="grid gap-8 md:grid-cols-2 mb-16">
-        <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center">
-            <span className="w-2 h-8 bg-primary mr-4"></span>
-            主要製品
-          </h2>
-          <ul className="space-y-3">
-            {['自動車内装部品', 'バス内装部品', '鉄道車両用シート', 'インテリア椅子'].map((item) => (
-              <li key={item} className="flex items-center text-gray-700 hover:text-primary transition-colors duration-200">
-                <span className="w-2 h-2 bg-primary rounded-full mr-3"></span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center">
-            <span className="w-2 h-8 bg-secondary mr-4"></span>
-            主要取引先
-          </h2>
-          <ul className="space-y-3">
-            {[
-              '林テレンプ株式会社',
-              '株式会社イノアックコーポレーション',
-              '天龍工業株式会社',
-              '三菱ふそうトラック・バス株式会社',
-              'アウンデ紡織株式会社',
-              '他多数'
-            ].map((item) => (
-              <li key={item} className="flex items-center text-gray-700 hover:text-secondary transition-colors duration-200">
-                <span className="w-2 h-2 bg-secondary rounded-full mr-3"></span>
-                {item}
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
 
