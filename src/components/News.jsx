@@ -1,58 +1,17 @@
-import { useState } from 'react';
-
-const newsItems = [
-  {
-    id: 1,
-    date: '2024-12-20',
-    category: 'お知らせ',
-    title: '社長名鑑の経営者インタビューを受けました。',
-    description: '弊社代表が社長名鑑の経営者インタビューに掲載されました。',
-    hasImage: true,
-  },
-  {
-    id: 2,
-    date: '2024-12-07',
-    category: 'お知らせ',
-    title: '会社案内のページを更新しました。',
-    description: '会社案内ページの内容を最新情報に更新いたしました。',
-    hasImage: false,
-  },
-  {
-    id: 3,
-    date: '2024-12-07',
-    category: 'イベント',
-    title: '第6回 改善活動発表会を開催しました。',
-    description: '社内の改善活動の成果を発表する第6回発表会を開催しました。',
-    hasImage: true,
-  },
-  {
-    id: 4,
-    date: '2024-05-11',
-    category: 'イベント',
-    title: '第5回 改善活動発表会を開催しました。',
-    description: '社内の改善活動の成果を発表する第5回発表会を開催しました。',
-    hasImage: true,
-  },
-  {
-    id: 5,
-    date: '2023-12-02',
-    category: 'イベント',
-    title: '第4回 改善活動発表会を開催しました。',
-    description: '社内の改善活動の成果を発表する第4回発表会を開催しました。',
-    hasImage: true,
-  },
-];
+import { useState } from "react";
+import { newsItems } from "../data/newsData";
 
 export default function News() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
-  const filteredNews = selectedCategory === 'all'
-    ? newsItems
-    : newsItems.filter(item => item.category === selectedCategory);
+  const filteredNews =
+    selectedCategory === "all"
+      ? newsItems
+      : newsItems.filter((item) => item.category === selectedCategory);
 
   // Function to format date from YYYY-MM-DD to YYYY/MM/DD
   const formatDate = (dateString) => {
-    return dateString.replace(/-/g, '/');
+    return dateString.replace(/-/g, "/");
   };
 
   return (
@@ -61,23 +20,23 @@ export default function News() {
         <h2 className="text-3xl font-bold text-gray-900 mb-8">新着情報</h2>
         <div className="mb-6 flex flex-wrap gap-2">
           <button
-            onClick={() => setSelectedCategory('all')}
+            onClick={() => setSelectedCategory("all")}
             className={`px-4 py-2 rounded-full ${
-              selectedCategory === 'all'
-                ? 'bg-primary text-white'
-                : 'bg-white text-gray-700'
+              selectedCategory === "all"
+                ? "bg-primary text-white"
+                : "bg-white text-gray-700"
             }`}
           >
             すべて
           </button>
-          {['お知らせ', 'プレスリリース', 'イベント'].map((category) => (
+          {["お知らせ", "プレスリリース", "イベント"].map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
               className={`px-4 py-2 rounded-full ${
                 selectedCategory === category
-                  ? 'bg-primary text-white'
-                  : 'bg-white text-gray-700'
+                  ? "bg-primary text-white"
+                  : "bg-white text-gray-700"
               }`}
             >
               {category}
@@ -92,18 +51,74 @@ export default function News() {
             >
               <div className="flex flex-col space-y-3">
                 <div className="flex items-center space-x-3">
-                  <span className="text-gray-500 text-sm">{formatDate(item.date)}</span>
+                  <span className="text-gray-500 text-sm">
+                    {formatDate(item.date)}
+                  </span>
                   <span className="px-2 py-0.5 bg-primary text-white text-xs rounded">
                     {item.category}
                   </span>
                 </div>
-                <a href="#" className="text-base font-medium text-gray-900 hover:text-primary">
-                  {item.title}
-                </a>
+                {item.link ? (
+                  <a
+                    href={item.link}
+                    target={item.isExternal ? "_blank" : ""}
+                    rel={item.isExternal ? "noopener noreferrer" : ""}
+                    className="text-base font-medium text-gray-900 hover:text-primary"
+                  >
+                    {item.title}
+                  </a>
+                ) : (
+                  <span className="text-base font-medium text-gray-900">
+                    {item.title}
+                  </span>
+                )}
                 <p className="text-sm text-gray-600">{item.description}</p>
                 {item.hasImage && (
-                  <div className="mt-2 bg-gray-100 p-3 rounded-lg flex items-center justify-center h-24">
-                    <p className="text-gray-400 text-sm">画像スペース</p>
+                  <div className="mt-2 rounded-lg overflow-hidden h-24">
+                    {item.images ? (
+                      <div className="flex space-x-2 h-full w-full justify-start">
+                        {item.images.map((img, index) => (
+                          <div
+                            key={index}
+                            className="h-full"
+                            style={{ flex: "0 0 auto", maxWidth: "48%" }}
+                          >
+                            <img
+                              key={index}
+                              src={
+                                img.startsWith("/")
+                                  ? img
+                                  : `/toyonakaKogyo/${img}`
+                              }
+                              alt={`${item.title} - 画像 ${index + 1}`}
+                              className="h-full object-contain"
+                              onError={(e) => {
+                                console.error(`画像読み込みエラー: ${img}`);
+                                e.target.style.display = "none";
+                              }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    ) : item.image ? (
+                      <img
+                        src={
+                          item.image.startsWith("/")
+                            ? item.image
+                            : `/toyonakaKogyo/${item.image}`
+                        }
+                        alt={item.title}
+                        className="w-full h-full object-contain"
+                        onError={(e) => {
+                          console.error(`画像読み込みエラー: ${item.image}`);
+                          e.target.style.display = "none";
+                        }}
+                      />
+                    ) : (
+                      <div className="bg-gray-100 p-3 flex items-center justify-center h-full w-full">
+                        <p className="text-gray-400 text-sm">画像スペース</p>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

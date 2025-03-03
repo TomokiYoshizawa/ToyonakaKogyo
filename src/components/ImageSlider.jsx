@@ -1,5 +1,5 @@
 import React from "react";
-import slideMovie from "../assets/movie/slideMovie.mp4";
+import slideMovie from "/assets/movie/slideMovie.mp4";
 
 export default function ImageSlider() {
   return (

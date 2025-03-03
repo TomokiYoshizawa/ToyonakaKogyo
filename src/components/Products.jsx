@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import carImage from "../assets/images/productImages/carImage.png";
-import instrumentPanelImage from "../assets/images/productImages/instrumentPanel.png";
-import seatsImage from "../assets/images/productImages/seat.png";
-import centerConsoleImage from "../assets/images/productImages/centerConsole.png";
-import doorPanelImage from "../assets/images/productImages/doorPanel.png";
-import pillarImage from "../assets/images/productImages/pillar.png";
+import carImage from "/assets/images/productImages/carImage.png";
+import instrumentPanelImage from "/assets/images/productImages/instrumentPanel.png";
+import seatsImage from "/assets/images/productImages/seat.png";
+import centerConsoleImage from "/assets/images/productImages/centerConsole.png";
+import doorPanelImage from "/assets/images/productImages/doorPanel.png";
+import pillarImage from "/assets/images/productImages/pillar.png";
 
 // Product categories with their subcategories
 const productCategories = [
