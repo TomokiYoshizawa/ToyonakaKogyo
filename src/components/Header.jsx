@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import ToyonakaLogo from "/assets/toyonakaKogyoLogo.jpg";
+import ToyonakaLogo from "../../public/assets/images/mainImages/toyonakaKogyoLogo.jpg";
 
 const navigation = [
   { name: "会社案内", href: "/about" },
