@@ -15,8 +15,8 @@ export default function News() {
   };
 
   return (
-    <section className="py-12 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="w-full py-12 bg-gray-50">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-8">新着情報</h2>
         <div className="mb-6 flex flex-wrap gap-2">
           <button

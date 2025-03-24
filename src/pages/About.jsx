@@ -1,3 +1,5 @@
+import { history } from '../data/historyData';
+
 export default function About() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -24,35 +26,84 @@ export default function About() {
       </div>
 
       <div className="mb-16">
-        <div className="bg-gradient-to-bl from-secondary/10 to-white p-8 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+        <div className="bg-gradient-to-bl from-secondary/10 to-white p-8 rounded-2xl shadow-lg">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">会社概要</h2>
-          <div className="space-y-4">
-            <div className="flex border-b border-gray-200 pb-4">
-              <span className="font-medium w-32">会社名</span>
-              <div>
-                <div className="text-lg">豊中工業株式会社</div>
-                <div className="text-gray-600">TOYONAKA INDUSTRY Co.,Ltd.</div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Left Column - Basic Information */}
+            <div className="space-y-4">
+              <div className="flex border-b border-gray-200 pb-4">
+                <span className="font-medium w-32">会社名</span>
+                <div>
+                  <div className="text-lg">豊中工業株式会社</div>
+                  <div className="text-gray-600">TOYONAKA INDUSTRY Co.,Ltd.</div>
+                </div>
+              </div>
+              <div className="flex border-b border-gray-200 pb-4">
+                <span className="font-medium w-32">代表者</span>
+                <span>代表取締役　前川　功冶</span>
+              </div>
+              <div className="flex border-b border-gray-200 pb-4">
+                <span className="font-medium w-32">創業</span>
+                <span>1942年1月(昭和17年)</span>
+              </div>
+              <div className="flex border-b border-gray-200 pb-4">
+                <span className="font-medium w-32">設立</span>
+                <span>1965年6月(昭和40年)</span>
+              </div>
+              <div className="flex border-b border-gray-200 pb-4">
+                <span className="font-medium w-32">資本金</span>
+                <span>3,000万円</span>
+              </div>
+              <div className="flex border-b border-gray-200 pb-4">
+                <span className="font-medium w-32">従業員数</span>
+                <span>212名(令和6年3月末)</span>
               </div>
             </div>
-            <div className="flex border-b border-gray-200 pb-4">
-              <span className="font-medium w-32">代表者</span>
-              <span>代表取締役　前川　功冶</span>
+            {/* Right Column - Products and Partners */}
+            <div className="space-y-6">
+              <div>
+                <h3 className="font-medium text-lg mb-3">主要製品</h3>
+                <div className="space-y-2 text-gray-800">
+                  <div>自動車内装部品</div>
+                  <div>バス内装部品</div>
+                  <div>鉄道車両用シート</div>
+                  <div>インテリア椅子</div>
+                </div>
+              </div>
+              <div className="border-t border-gray-200 pt-6">
+                <h3 className="font-medium text-lg mb-3">主要取引先</h3>
+                <div className="space-y-2 text-gray-800">
+                  <div>林テレンプ株式会社</div>
+                  <div>株式会社イノアックコーポレーション</div>
+                  <div>天龍工業株式会社</div>
+                  <div>三菱ふそうトラック・バス株式会社</div>
+                  <div>アウンデ紡織株式会社</div>
+                  <div className="text-gray-600">他多数</div>
+                </div>
+              </div>
             </div>
-            <div className="flex border-b border-gray-200 pb-4">
-              <span className="font-medium w-32">創業</span>
-              <span>1942年1月(昭和17年)</span>
-            </div>
-            <div className="flex border-b border-gray-200 pb-4">
-              <span className="font-medium w-32">設立</span>
-              <span>1965年6月(昭和40年)</span>
-            </div>
-            <div className="flex border-b border-gray-200 pb-4">
-              <span className="font-medium w-32">資本金</span>
-              <span>3,000万円</span>
-            </div>
-            <div className="flex border-b border-gray-200 pb-4">
-              <span className="font-medium w-32">従業員数</span>
-              <span>212名(令和6年3月末)</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-16">
+        <div className="bg-white p-8 rounded-2xl shadow-lg">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">沿革</h2>
+          <div className="relative">
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary/20"></div>
+            <div className="h-[600px] overflow-y-auto pr-4 space-y-8 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-gray-100">
+              {history.map((item, index) => (
+                <div key={index} className="relative pl-16">
+                  <div className="absolute left-7 top-5 w-3 h-3 bg-primary rounded-full transform -translate-x-1/2"></div>
+                  <div className="bg-gradient-to-br from-primary/5 to-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div className="flex items-baseline mb-2">
+                      <span className="text-xl font-bold text-primary mr-3">{item.year}</span>
+                      <span className="text-gray-600">{item.month}</span>
+                    </div>
+                    <p className="text-gray-800 text-sm">{item.event}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -6,9 +6,11 @@ import emailjs from 'emailjs-com';
 export default function ApplicationModal({ isOpen, onClose, position, locationAddress }) {
   const [formData, setFormData] = useState({
     name: '',
+    age: '',
     email: '',
     phone: '',
-    message: ''
+    company: '',
+    department: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
@@ -33,7 +35,9 @@ export default function ApplicationModal({ isOpen, onClose, position, locationAd
         from_name: formData.name,
         from_email: formData.email,
         phone: formData.phone,
-        message: formData.message,
+        age: formData.age,
+        company: formData.company,
+        department: formData.department,
         position_title: position.title,
         location: locationAddress
       };
@@ -51,14 +55,16 @@ export default function ApplicationModal({ isOpen, onClose, position, locationAd
         setSubmitSuccess(false);
         setFormData({
           name: '',
+          age: '',
           email: '',
           phone: '',
-          message: ''
+          company: '',
+          department: ''
         });
       }, 3000);
     } catch (error) {
-      console.error('Email sending error:', error);
-      setSubmitError('メールの送信に失敗しました。もう一度お試しください。');
+      console.error('Form error:', error);
+      setSubmitError('エラーが発生しました。もう一度お試しください。');
     } finally {
       setIsSubmitting(false);
     }
@@ -69,9 +75,11 @@ export default function ApplicationModal({ isOpen, onClose, position, locationAd
     if (!isOpen) {
       setFormData({
         name: '',
+        age: '',
         email: '',
         phone: '',
-        message: ''
+        company: '',
+        department: ''
       });
       setSubmitError('');
       setSubmitSuccess(false);
@@ -125,7 +133,7 @@ export default function ApplicationModal({ isOpen, onClose, position, locationAd
                     <p className="text-gray-600 mt-2">{locationAddress}</p>
                   </div>
 
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                         お名前 <span className="text-red-500">*</span>
@@ -135,6 +143,23 @@ export default function ApplicationModal({ isOpen, onClose, position, locationAd
                         id="name"
                         name="name"
                         value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="age" className="block text-sm font-medium text-gray-700">
+                        年齢 <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="number"
+                        id="age"
+                        name="age"
+                        min="16"
+                        max="100"
+                        value={formData.age}
                         onChange={handleInputChange}
                         required
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
@@ -172,16 +197,29 @@ export default function ApplicationModal({ isOpen, onClose, position, locationAd
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                        志望動機・自己PR <span className="text-red-500">*</span>
+                      <label htmlFor="company" className="block text-sm font-medium text-gray-700">
+                        現在の会社名
                       </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
+                      <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        value={formData.company}
                         onChange={handleInputChange}
-                        required
-                        rows={6}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="department" className="block text-sm font-medium text-gray-700">
+                        部署名
+                      </label>
+                      <input
+                        type="text"
+                        id="department"
+                        name="department"
+                        value={formData.department}
+                        onChange={handleInputChange}
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
                       />
                     </div>
@@ -196,18 +234,12 @@ export default function ApplicationModal({ isOpen, onClose, position, locationAd
                       </div>
                     )}
 
-                    <div className="flex justify-end space-x-3">
-                      <button
-                        type="button"
-                        onClick={onClose}
-                        className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-                      >
-                        キャンセル
-                      </button>
+                    <div className="mt-6">
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50"
+                        className={`w-full bg-primary text-white py-3 px-6 rounded-lg transition-colors duration-300
+                          ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-secondary'}`}
                       >
                         {isSubmitting ? '送信中...' : '応募する'}
                       </button>
