@@ -1,47 +1,49 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const stats = [
   {
     id: 1,
-    title: '創業年数',
-    value: '55',
-    unit: '年以上',
-    subtitle: '昭和43年\n(1968年)',
+    title: "創業年数",
+    value: "70",
+    unit: "年以上",
+    subtitle: "1942年",
   },
   {
     id: 2,
-    title: '拠点数',
-    value: '3',
-    unit: '',
-    subtitle: '本社営業所\n豊明営業所\n名北営業所',
+    title: "拠点数",
+    value: "4",
+    unit: "",
+    subtitle: "本社工場\n豊田工場\n富山工場\nトヨナカ栃木工場",
   },
   {
     id: 4,
-    title: '売上高',
-    value: '5',
-    unit: '億',
-    subtitle: '5000万円（2024年7月期）',
+    title: "売上高",
+    value: "5",
+    unit: "億",
+    subtitle: "5000万円（2024年7月期）",
   },
   {
     id: 6,
-    title: '平均年齢',
-    value: '49',
-    unit: '歳',
-    subtitle: '',
+    title: "平均年齢",
+    value: "49",
+    unit: "歳",
+    subtitle: "",
     centered: true,
   },
   {
     id: 7,
-    title: '年間休日',
-    value: '119',
-    unit: '日',
-    subtitle: '',
+    title: "年間休日",
+    value: "119",
+    unit: "日",
+    subtitle: "",
     centered: true,
   },
 ];
 
 export default function CompanyStats() {
-  const [animatedStats, setAnimatedStats] = useState(stats.map(stat => ({ ...stat, currentValue: 0 })));
+  const [animatedStats, setAnimatedStats] = useState(
+    stats.map((stat) => ({ ...stat, currentValue: 0 }))
+  );
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -56,7 +58,7 @@ export default function CompanyStats() {
       { threshold: 0.1 }
     );
 
-    observer.observe(document.querySelector('.stats-container'));
+    observer.observe(document.querySelector(".stats-container"));
 
     return () => observer.disconnect();
   }, []);
@@ -71,10 +73,16 @@ export default function CompanyStats() {
 
       const interval = setInterval(() => {
         if (currentStep < steps) {
-          setAnimatedStats(prev => 
-            prev.map((s, i) => 
-              i === index 
-                ? { ...s, currentValue: Math.min(Math.round(increment * currentStep), targetValue) }
+          setAnimatedStats((prev) =>
+            prev.map((s, i) =>
+              i === index
+                ? {
+                    ...s,
+                    currentValue: Math.min(
+                      Math.round(increment * currentStep),
+                      targetValue
+                    ),
+                  }
                 : s
             )
           );
@@ -89,20 +97,26 @@ export default function CompanyStats() {
   return (
     <section className="bg-primary py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-white text-center mb-4">INFOGRAPHICS</h2>
-        <p className="text-xl text-white text-center mb-12">数字で見る巴運輸</p>
-        
+        <h2 className="text-4xl font-bold text-white text-center mb-4">
+          INFOGRAPHICS
+        </h2>
+        <p className="text-xl text-white text-center mb-12">
+          数字で見る豊中工業株式会社 (必要ない？)
+        </p>
+
         <div className="stats-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {animatedStats.map((stat) => (
             <div
               key={stat.id}
               className={`bg-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-all duration-300 ${
-                stat.centered ? 'flex flex-col items-center' : ''
+                stat.centered ? "flex flex-col items-center" : ""
               }`}
             >
-              <h3 className={`text-primary font-bold text-lg mb-4 ${
-                stat.centered ? 'text-center' : ''
-              }`}>
+              <h3
+                className={`text-primary text-center font-bold text-lg mb-4 ${
+                  stat.centered ? "text-center" : ""
+                }`}
+              >
                 {stat.title}
               </h3>
               <div className="flex items-baseline justify-center">

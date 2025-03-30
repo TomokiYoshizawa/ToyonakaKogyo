@@ -53,7 +53,11 @@ export default function Products() {
           <div className="lg:col-span-3 flex items-center">
             <div className="bg-gray-100 rounded-lg p-3 w-full">
               <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg flex items-center justify-center">
-                <img src={carImage} className="w-full h-full object-cover" alt="Car illustration" />
+                <img
+                  src={carImage}
+                  className="w-full h-full object-cover"
+                  alt="Car illustration"
+                />
               </div>
             </div>
           </div>
@@ -84,9 +88,7 @@ export default function Products() {
                     <ul className="text-base text-gray-600">
                       {category.subcategories.map((subcat, index) => (
                         <li key={index} className="flex items-start mb-1">
-                          <span className="text-primary mr-1.5 text-lg">
-                            ›
-                          </span>
+                          <span className="text-primary mr-1.5 text-lg">›</span>
                           <span className="truncate">{subcat}</span>
                         </li>
                       ))}
