@@ -1,6 +1,12 @@
+import { useState } from 'react';
 import Careers from '../components/careers/Careers';
+import ImageGallery from '../components/careers/ImageGallery';
+import CompanyStats from '../components/careers/CompanyStats';
+import CompanyFeatures from '../components/careers/CompanyFeatures';
 
 export default function CareersPage() {
+  const [showJobListings, setShowJobListings] = useState(false);
+
   return (
     <div>
       {/* Hero Section */}
@@ -22,6 +28,12 @@ export default function CareersPage() {
         </div>
       </div>
 
+      {/* Company Features Section */}
+      <CompanyFeatures />
+
+      {/* Company Stats Section */}
+      <CompanyStats />
+
       {/* Why Choose Us Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,53 +51,6 @@ export default function CareersPage() {
               <h3 className="text-xl font-bold text-gray-900 mb-4">グローバルとローカルを繋ぐ架け橋として</h3>
               <p className="text-gray-600">国内生産の確かな品質を大切にしながら、アジアを中心とした海外パートナーとの連携も強化。グローバルな視点と地域に根差したものづくりの両立で、変化する市場ニーズに柔軟に対応しています。</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Ideal Candidates Section */}
-      <section className="py-16 bg-gradient-to-br from-primary/5 via-white to-secondary/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">私たちが求める人材</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "情熱と創造力",
-                description: "繊維業界の未来に情熱を持ち、伝統技術と新技術の融合に挑戦したい方",
-                icon: "🔥"
-              },
-              {
-                title: "チームワーク",
-                description: "製造現場での協働に積極的に取り組める方",
-                icon: "🤝"
-              },
-              {
-                title: "品質へのこだわり",
-                description: "細部まで丁寧に仕事に取り組める姿勢をお持ちの方",
-                icon: "✨"
-              },
-              {
-                title: "コミュニケーション力",
-                description: "国内外の顧客や取引先とのコミュニケーションに意欲がある方",
-                icon: "💬"
-              },
-              {
-                title: "サステナビリティへの関心",
-                description: "環境配慮型の製品開発に興味がある方",
-                icon: "🌱"
-              }
-            ].map((item, index) => (
-              <div 
-                key={index} 
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-              >
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  {item.title}
-                </h3>
-                <p className="text-gray-700">{item.description}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -137,6 +102,14 @@ export default function CareersPage() {
         </div>
       </section>
 
+      {/* Image Gallery Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">社内の雰囲気</h2>
+          <ImageGallery />
+        </div>
+      </section>
+
       {/* Call to Action Section */}
       <section className="py-16 bg-gradient-to-r from-primary/10 via-white to-primary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -146,8 +119,35 @@ export default function CareersPage() {
         </div>
       </section>
 
+      {/* Job Listings Button */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <button
+            onClick={() => setShowJobListings(!showJobListings)}
+            className="bg-primary hover:bg-secondary text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center mx-auto"
+          >
+            <span className="mr-2">現在の募集職種を見る</span>
+            <svg
+              className={`w-6 h-6 transition-transform duration-300 ${showJobListings ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
+
       {/* Current Job Openings */}
-      <Careers />
+      <div className={`transition-all duration-500 ease-in-out ${showJobListings ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
+        <Careers />
+      </div>
     </div>
   );
 }
