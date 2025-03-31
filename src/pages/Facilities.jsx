@@ -56,21 +56,17 @@ export default function Facilities() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-primary/10 via-white to-primary/5 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            工場・施設紹介
-            <span className="block text-2xl text-gray-600 mt-2">Factory & Production Facilities</span>
-          </h1>
-          <div className="mt-8 prose prose-lg text-gray-600">
-            <p>
+      <div className="relative bg-gradient-to-r from-primary/10 via-white to-primary/5 py-32">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="relative">
+            <span className="block text-4xl md:text-5xl mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              工場・施設紹介
+            </span>
+            <p className="text-xl md:text-2xl text-gray-700 max-w-2xl">
               豊中工業は、生産拠点を全国に展開することで、お客様の多様なニーズに柔軟に対応できる生産体制を構築しています。
-              日本のものづくりの中心地である愛知をはじめとして、国内4つの拠点に最新の生産設備を配備し、高品質な製品の安定供給を実現しています。
             </p>
-            <p>
-              各拠点は、地域の特性を活かしながら、豊中工業の確かな技術と品質管理システムで結ばれ、
-              日本全国に広がる豊中工業のネットワークを形成しています。
-            </p>
+            <div className="absolute bottom-0 left-0 w-32 h-1 bg-primary mt-6"></div>
           </div>
         </div>
       </div>

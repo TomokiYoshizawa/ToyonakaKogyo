@@ -16,6 +16,8 @@ const features = [
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus reprehenderit aliquam incidunt dolores, blanditiis debitis provident. A voluptas repellendus iusto autem vel nam asperiores corporis deserunt ex, consequatur quasi alias.",
     image: "/assets/images/careers/feature2.jpg",
     imagePosition: "left",
+    extraMargin: true,
+    extraSpacing: true,
   },
   {
     id: "03",
@@ -38,9 +40,9 @@ export default function CompanyFeatures() {
               feature.imagePosition === "right"
                 ? "lg:flex-row"
                 : "lg:flex-row-reverse"
-            } items-center mb-24 last:mb-0`}
+            } items-center ${feature.extraMargin ? 'my-32' : 'mb-24'} last:mb-0`}
           >
-            <div className="lg:w-1/2 lg:pr-12">
+            <div className={`lg:w-1/2 ${feature.extraSpacing ? 'lg:px-12' : 'lg:pr-12'}`}>
               <div className="flex items-center mb-6">
                 <span className="text-8xl font-light text-gray-300 leading-none mr-8 text-primary">
                   {feature.id}
@@ -53,7 +55,7 @@ export default function CompanyFeatures() {
                 {feature.description}
               </p>
             </div>
-            <div className="lg:w-1/2 mt-8 lg:mt-0">
+            <div className={`lg:w-1/2 mt-8 lg:mt-0 ${feature.extraMargin ? 'my-8' : ''} ${feature.extraSpacing ? 'lg:px-12' : ''}`}>
               <div className="bg-gray-100 rounded-lg overflow-hidden aspect-[4/3]">
                 <div className="w-full h-full flex items-center justify-center">
                   <p className="text-gray-500">画像がここに表示されます</p>

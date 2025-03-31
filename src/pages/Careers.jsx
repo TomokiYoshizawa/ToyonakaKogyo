@@ -10,16 +10,13 @@ export default function CareersPage() {
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-primary/10 via-white to-primary/5 py-24">
+      <div className="relative bg-gradient-to-r from-primary/10 via-white to-primary/5 py-32">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="relative">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              豊中工業株式会社{' '}
-              <span className="block text-4xl md:text-5xl mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                採用情報
-              </span>
-            </h1>
+            <span className="block text-4xl md:text-5xl mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              採用情報
+            </span>
             <p className="text-xl md:text-2xl text-gray-700 max-w-2xl">
               伝統と革新が織りなす、繊維の未来へ
             </p>

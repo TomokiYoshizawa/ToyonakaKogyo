@@ -165,13 +165,22 @@ export default function Products() {
   const [activeCategory, setActiveCategory] = useState("interior");
 
   return (
-    <div className="w-full px-4 sm:px-6 lg:px-8 py-12">
-      <div className="max-w-7xl mx-auto mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-6">製品紹介</h1>
-        <p className="text-lg text-gray-600 max-w-3xl">
-          豊中工業では、自動車内装部品を中心に、高品質で革新的な製品を開発・製造しています。
-          長年の経験と最新技術を融合させ、お客様のニーズに応える製品をご提供します。
-        </p>
+    <div className="w-full">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-r from-primary/10 via-white to-primary/5 py-32">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="relative">
+            <span className="block text-4xl md:text-5xl mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              製品紹介
+            </span>
+            <p className="text-xl md:text-2xl text-gray-700 max-w-2xl">
+              豊中工業では、自動車内装部品を中心に、高品質で革新的な製品を開発・製造しています。
+              長年の経験と最新技術を融合させ、お客様のニーズに応える製品をご提供します。
+            </p>
+            <div className="absolute bottom-0 left-0 w-32 h-1 bg-primary mt-6"></div>
+          </div>
+        </div>
       </div>
 
       {/* Category Tabs - Full Width */}
