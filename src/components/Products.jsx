@@ -42,7 +42,7 @@ const productCategories = [
 
 export default function Products() {
   return (
-    <section className="w-full py-12 bg-white">
+    <section className="w-full py-24 pb-32 bg-white">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
           <h2 className="text-3xl font-bold text-gray-900">製品</h2>
@@ -53,7 +53,11 @@ export default function Products() {
           <div className="lg:col-span-3 flex items-center">
             <div className="bg-gray-100 rounded-lg p-3 w-full">
               <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg flex items-center justify-center">
-                <img src={carImage} className="w-full h-full object-cover" alt="Car illustration" />
+                <img
+                  src={carImage}
+                  className="w-full h-full object-cover"
+                  alt="Car illustration"
+                />
               </div>
             </div>
           </div>
@@ -84,9 +88,7 @@ export default function Products() {
                     <ul className="text-base text-gray-600">
                       {category.subcategories.map((subcat, index) => (
                         <li key={index} className="flex items-start mb-1">
-                          <span className="text-primary mr-1.5 text-lg">
-                            ›
-                          </span>
+                          <span className="text-primary mr-1.5 text-lg">›</span>
                           <span className="truncate">{subcat}</span>
                         </li>
                       ))}
@@ -94,7 +96,7 @@ export default function Products() {
                     <div className="mt-3 text-right">
                       <Link
                         to={`/products?category=${category.id}`}
-                        className="inline-flex items-center text-primary hover:text-secondary text-base font-medium"
+                        className="inline-flex items-center text-gray-700 hover:text-gray-900 text-base font-medium"
                       >
                         <span>詳細</span>
                         <svg

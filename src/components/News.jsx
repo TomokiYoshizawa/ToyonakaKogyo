@@ -14,8 +14,22 @@ export default function News() {
     return dateString.replace(/-/g, "/");
   };
 
+  // カテゴリーに応じた背景色を返す関数
+  const getCategoryStyle = (category) => {
+    switch (category) {
+      case "お知らせ":
+        return "bg-blue-500";
+      case "プレスリリース":
+        return "bg-green-500";
+      case "イベント":
+        return "bg-orange-500";
+      default:
+        return "bg-primary";
+    }
+  };
+
   return (
-    <section className="w-full py-12 bg-gray-50">
+    <section className="w-full py-24 bg-gray-50">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-8">新着情報</h2>
         <div className="mb-6 flex flex-wrap gap-2">
@@ -35,7 +49,7 @@ export default function News() {
               onClick={() => setSelectedCategory(category)}
               className={`px-4 py-2 rounded-full ${
                 selectedCategory === category
-                  ? "bg-primary text-white"
+                  ? `${getCategoryStyle(category)} text-white`
                   : "bg-white text-gray-700"
               }`}
             >
@@ -54,7 +68,11 @@ export default function News() {
                   <span className="text-gray-500 text-sm">
                     {formatDate(item.date)}
                   </span>
-                  <span className="px-2 py-0.5 bg-primary text-white text-xs rounded">
+                  <span
+                    className={`px-2 py-0.5 ${getCategoryStyle(
+                      item.category
+                    )} text-white text-xs rounded`}
+                  >
                     {item.category}
                   </span>
                 </div>
