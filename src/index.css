@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding-left: 8rem;
+    padding-right: 8rem;
+    max-width: 1536px;
+  }
+}
+
+.hero-gradient {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+/* Slider Styles */
+.gallery-slider .slick-slide {
+  padding: 0 8px;
+}
+
+.gallery-slider .slick-dots {
+  bottom: -40px;
+}
+
+.gallery-slider .slick-dots li button:before {
+  color: #3374A4;
+}
+
+.gallery-slider .slick-dots li.slick-active button:before {
+  color: #3374A4;
+}
+
+.gallery-slider .slick-prev,
+.gallery-slider .slick-next {
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+}
+
+.gallery-slider .slick-prev:before,
+.gallery-slider .slick-next:before {
+  color: #3374A4;
+  font-size: 40px;
+}
+
+.gallery-slider .slick-prev {
+  left: -50px;
+}
+
+.gallery-slider .slick-next {
+  right: -50px;
+}
